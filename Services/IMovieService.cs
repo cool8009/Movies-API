@@ -5,7 +5,7 @@ namespace Movies_API.Services
 {
     public interface IMovieService
     {
-        Task<List<Movie>> GetAsync();
+        Task<List<Movie>> GetPopularMoviesAsync();
         Task<List<Movie>> GetSearchResultsAsync(string searchtext);
     }
 }

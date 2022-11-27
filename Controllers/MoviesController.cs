@@ -9,18 +9,30 @@ namespace Movies_API.Controllers
     [ApiController]
     public class MoviesController : ControllerBase
     {
+        //dependency injection
         private readonly IMovieService _movieService;
 
         public MoviesController(IMovieService movieService)
         {
             _movieService = movieService;
         }
+        /// <summary>
+        /// Controller endpoint for getting popular movies
+        /// METHOD: GET
+        /// </summary>
+        /// <returns>A Task containing an IEnumerable of the Movie object</returns>
         [HttpGet]
         public async Task<IEnumerable<Movie>> GetMovies()
         {
-            var movies = await _movieService.GetAsync();
+            var movies = await _movieService.GetPopularMoviesAsync();
             return movies;
         }
+        /// <summary>
+        /// Controller endpoint for getting search result movies based on query string
+        /// METHOD: GET 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns>A Task containing an IEnumerable of the Movie object</returns>        
         [HttpGet("{query}")]
         public async Task<IEnumerable<Movie>> GetMoviesFromSearchResults(string query)
         {

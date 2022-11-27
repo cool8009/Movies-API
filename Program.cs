@@ -22,6 +22,7 @@ namespace Movies_API
                     .AllowAnyMethod());
             });
 
+            //dependency injection container
             builder.Services.AddScoped<IMovieService, MovieService>();
 
             var app = builder.Build();
